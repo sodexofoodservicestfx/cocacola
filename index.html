@@ -177,7 +177,113 @@ body {
 ========================= */
 
 #mainMenu {
+    width: 100%;
+    height: 100%;
+
     display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #F40009;
+}
+
+.menuContent {
+    width: 90%;
+    max-width: 1100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.menuLogo {
+    width: min(430px, 55vw);
+    height: auto;
+
+    margin-bottom: 15px;
+}
+
+.menuTitle {
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 30px;
+}
+
+.menuButtons {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.menuButton {
+    min-height: 150px;
+
+    border: 5px solid white;
+    border-radius: 25px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: clamp(25px, 3vw, 40px);
+    font-weight: 900;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    box-shadow:
+        0 8px 0 rgba(0,0,0,0.15);
+
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s;
+}
+
+.menuButton:active {
+    transform: translateY(7px);
+
+    box-shadow:
+        0 2px 0 rgba(0,0,0,0.15);
+}
+
+.menuButton span {
+    display: block;
+}
+
+
+/* =========================
+   T972 / SMALLER SCREENS
+========================= */
+
+@media (max-width: 800px) {
+
+    .menuButtons {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .menuButton {
+        min-height: 110px;
+    }
+
 }
 
 </style>
@@ -226,6 +332,43 @@ body {
 ========================= -->
 
 <div id="mainMenu">
+
+    <div class="menuContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="menuLogo">
+
+        <div class="menuTitle">
+            CHOOSE AN EXPERIENCE
+        </div>
+
+        <div class="menuButtons">
+
+            <button class="menuButton" id="triviaButton">
+                🧠
+                <span>COKE TRIVIA</span>
+            </button>
+
+            <button class="menuButton" id="cokeOrNotButton">
+                👀
+                <span>COKE OR NOT?</span>
+            </button>
+
+            <button class="menuButton" id="guessProductButton">
+                🕵️
+                <span>GUESS THE COKE PRODUCT</span>
+            </button>
+
+            <button class="menuButton" id="worldButton">
+                🌎
+                <span>COKE AROUND THE WORLD</span>
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
