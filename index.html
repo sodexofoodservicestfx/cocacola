@@ -95,19 +95,12 @@ body {
 /* Coca-Cola logo */
 
 .cocaLogo {
-    font-family: "Brush Script MT", "Segoe Script", cursive;
-    font-size: clamp(70px, 11vw, 150px);
-    font-weight: bold;
-    font-style: italic;
+    width: min(750px, 80vw);
+    height: auto;
 
-    letter-spacing: -7px;
+    display: block;
 
-    color: white;
-
-    text-shadow:
-        3px 3px 0 rgba(0,0,0,0.08);
-
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 /* Divider */
@@ -204,9 +197,10 @@ body {
 
     <div class="welcomeContent">
 
-        <div class="cocaLogo">
-            Coca-Cola
-        </div>
+        <img
+    src="Coca-Cola_logo_white.png"
+    alt="Coca-Cola"
+    class="cocaLogo">
 
         <div class="logoLine"></div>
 
