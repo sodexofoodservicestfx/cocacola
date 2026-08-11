@@ -741,167 +741,171 @@ document.getElementById("startButton").addEventListener("click", function() {
 const cokeTriviaQuestions = [
 
     {
-        question: "What year was Coca-Cola created?",
-        answers: ["1886", "1896", "1906", "1916"],
+        question: "Which holiday character became strongly associated with Coca-Cola advertising?",
+        answers: [
+            "Santa Claus",
+            "The Easter Bunny",
+            "The Grinch",
+            "Frosty the Snowman"
+        ],
+        correct: "Santa Claus"
+    },
+
+    {
+        question: "What kind of vehicle is famous in Coca-Cola holiday ads?",
+        answers: [
+            "A red delivery truck",
+            "A yellow school bus",
+            "A blue sports car",
+            "A green train"
+        ],
+        correct: "A red delivery truck"
+    },
+
+    {
+        question: "What material were many early Coca-Cola bottles made from?",
+        answers: [
+            "Glass",
+            "Plastic",
+            "Aluminum",
+            "Paper"
+        ],
+        correct: "Glass"
+    },
+
+    {
+        question: "What year was Coca-Cola invented?",
+        answers: [
+            "1886",
+            "1896",
+            "1906",
+            "1916"
+        ],
         correct: "1886"
     },
 
     {
-        question: "Where was Coca-Cola first created?",
+        question: "Who invented Coca-Cola?",
+        answers: [
+            "Dr. John Pemberton",
+            "Asa Candler",
+            "Frank Robinson",
+            "Raymond Loewy"
+        ],
+        correct: "Dr. John Pemberton"
+    },
+
+    {
+        question: "What city was Coca-Cola created in?",
         answers: [
             "Atlanta, Georgia",
             "New York, New York",
             "Chicago, Illinois",
-            "Miami, Florida"
+            "Boston, Massachusetts"
         ],
         correct: "Atlanta, Georgia"
     },
 
     {
-        question: "Who created Coca-Cola?",
+        question: "What was Coca-Cola originally sold at?",
         answers: [
-            "John Pemberton",
-            "Henry Ford",
-            "Walt Disney",
-            "Milton Hershey"
+            "A pharmacy",
+            "A grocery store",
+            "A movie theatre",
+            "A restaurant"
         ],
-        correct: "John Pemberton"
+        correct: "A pharmacy"
     },
 
     {
-        question: "Which of these is a Coca-Cola brand?",
+        question: "What colour is the classic Coca-Cola bottle commonly associated with?",
         answers: [
-            "Sprite",
-            "Pepsi",
-            "Mountain Dew",
-            "7UP"
-        ],
-        correct: "Sprite"
-    },
-
-    {
-        question: "What colour is most associated with Coca-Cola?",
-        answers: [
-            "Red",
-            "Blue",
             "Green",
-            "Purple"
+            "Blue",
+            "red",
+            "brown"
         ],
-        correct: "Red"
-    },
-
-    {
-        question: "Which Coca-Cola drink has no sugar?",
-        answers: [
-            "Coke Zero Sugar",
-            "Minute Maid",
-            "Fanta",
-            "Powerade"
-        ],
-        correct: "Coke Zero Sugar"
-    },
-
-    {
-        question: "Which Coca-Cola brand is known for orange flavour?",
-        answers: [
-            "Fanta",
-            "Sprite",
-            "Powerade",
-            "Dasani"
-        ],
-        correct: "Fanta"
-    },
-
-    {
-        question: "Which Coca-Cola brand is a sports drink?",
-        answers: [
-            "Powerade",
-            "Fanta",
-            "Sprite",
-            "Minute Maid"
-        ],
-        correct: "Powerade"
-    },
-
-    {
-        question: "What is the famous Coca-Cola bottle called?",
-        answers: [
-            "Contour bottle",
-            "Classic bottle",
-            "Curve bottle",
-            "Signature bottle"
-        ],
-        correct: "Contour bottle"
-    },
-
-    {
-        question: "Which drink is known for its lemon-lime flavour?",
-        answers: [
-            "Sprite",
-            "Fanta",
-            "Coca-Cola",
-            "Powerade"
-        ],
-        correct: "Sprite"
-    },
-
-    {
-        question: "Which Coca-Cola brand is primarily a juice brand?",
-        answers: [
-            "Minute Maid",
-            "Sprite",
-            "Fanta",
-            "Powerade"
-        ],
-        correct: "Minute Maid"
-    },
-
-    {
-        question: "Coca-Cola was originally sold in what type of place?",
-        answers: [
-            "Pharmacy",
-            "Grocery store",
-            "Movie theatre",
-            "Restaurant"
-        ],
-        correct: "Pharmacy"
-    },
-
-    {
-        question: "Which of these is NOT a Coca-Cola brand?",
-        answers: [
-            "Pepsi",
-            "Sprite",
-            "Fanta",
-            "Powerade"
-        ],
-        correct: "Pepsi"
+        correct: "Green"
     },
 
     {
         question: "What is Coca-Cola commonly shortened to?",
         answers: [
             "Coke",
-            "Cola-X",
-            "C-Cola",
-            "CC"
+            "Cola",
+            "CC",
+            "C-Cola"
         ],
         correct: "Coke"
     },
 
     {
-        question: "Which Coca-Cola drink is a lemon-lime soda?",
+        question: "What does the word “Cola” in Coca-Cola refer to?",
         answers: [
-            "Sprite",
-            "Fanta",
-            "Coke Zero",
-            "Powerade"
+            "Kola nuts",
+            "Cocoa beans",
+            "Coffee beans",
+            "Cola flowers"
         ],
-        correct: "Sprite"
+        correct: "Kola nuts"
+    },
+
+    {
+        question: "What does the word “Coca” in Coca-Cola refer to?",
+        answers: [
+            "The coca leaf",
+            "Cocoa beans",
+            "A type of sugar",
+            "A type of citrus fruit"
+        ],
+        correct: "The coca leaf"
+    },
+
+    {
+        question: "What was Coca-Cola originally intended to be?",
+        answers: [
+            "A medicinal tonic",
+            "An energy drink",
+            "A sports drink",
+            "A fruit juice"
+        ],
+        correct: "A medicinal tonic"
+    },
+
+    {
+        question: "What was Coca-Cola's first recorded serving price?",
+        answers: [
+            "5 cents",
+            "10 cents",
+            "15 cents",
+            "25 cents"
+        ],
+        correct: "5 cents"
+    },
+
+    {
+        question: "What year did Coca-Cola first begin being bottled?",
+        answers: [
+            "1899",
+            "1886",
+            "1909",
+            "1915"
+        ],
+        correct: "1899"
+    },
+
+    {
+        question: "What inspired the shape of the Coca-Cola contour bottle?",
+        answers: [
+            "The cocoa pod",
+            "The coca leaf",
+            "The kola nut",
+            "A football"
+        ],
+        correct: "The cocoa pod"
     }
 
 ];
-
 
 /* =========================
    GAME VARIABLES
