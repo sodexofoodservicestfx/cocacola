@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Coca-Cola</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #F40009;
+    color: white;
+}
+
+/* =========================
+   WELCOME SCREEN
+========================= */
+
+#welcomeScreen {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0 3px, transparent 4px),
+        #F40009;
+}
+
+/* Decorative circles */
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.12);
+}
+
+.bubble.one {
+    width: 180px;
+    height: 180px;
+    top: -60px;
+    left: -50px;
+}
+
+.bubble.two {
+    width: 280px;
+    height: 280px;
+    right: -120px;
+    bottom: -100px;
+}
+
+.bubble.three {
+    width: 90px;
+    height: 90px;
+    right: 18%;
+    top: 12%;
+}
+
+/* Main content */
+
+.welcomeContent {
+    position: relative;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 1000px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Coca-Cola logo */
+
+.cocaLogo {
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+    font-size: clamp(70px, 11vw, 150px);
+    font-weight: bold;
+    font-style: italic;
+
+    letter-spacing: -7px;
+
+    color: white;
+
+    text-shadow:
+        3px 3px 0 rgba(0,0,0,0.08);
+
+    margin-bottom: 10px;
+}
+
+/* Divider */
+
+.logoLine {
+    width: 240px;
+    height: 5px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    margin-bottom: 35px;
+}
+
+/* Welcome text */
+
+.welcomeText {
+    font-size: clamp(28px, 4vw, 55px);
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 45px;
+}
+
+/* Start button */
+
+#startButton {
+    width: min(520px, 80vw);
+    height: 120px;
+
+    border: 5px solid white;
+    border-radius: 30px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 0 rgba(0,0,0,0.15);
+
+    transition:
+        transform 0.1s,
+        box-shadow 0.1s;
+}
+
+#startButton:active {
+    transform: translateY(8px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+/* Small bottom text */
+
+.bottomText {
+    margin-top: 40px;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    opacity: 0.9;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   MAIN MENU
+========================= */
+
+#mainMenu {
+    display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     WELCOME SCREEN
+========================= -->
+
+<div id="welcomeScreen">
+
+    <div class="bubble one"></div>
+    <div class="bubble two"></div>
+    <div class="bubble three"></div>
+
+    <div class="welcomeContent">
+
+        <div class="cocaLogo">
+            Coca-Cola
+        </div>
+
+        <div class="logoLine"></div>
+
+        <div class="welcomeText">
+            WELCOME
+        </div>
+
+        <button id="startButton">
+            START
+        </button>
+
+        <div class="bottomText">
+            ENJOY THE EXPERIENCE
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN MENU
+========================= -->
+
+<div id="mainMenu">
+
+</div>
+
+
+<script>
+
+document.getElementById("startButton").addEventListener("click", function() {
+
+    document.getElementById("welcomeScreen").style.display = "none";
+
+    document.getElementById("mainMenu").style.display = "flex";
+
+});
+
+</script>
+
+</body>
+</html>
