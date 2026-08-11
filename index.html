@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -208,7 +209,7 @@ body {
 
     margin-bottom: 15px;
 
-     transform: translateY(-50px);
+     transform: translateY(-100px);
 }
 
 .menuTitle {
@@ -288,6 +289,266 @@ body {
 
 }
 
+/* =========================
+   COKE TRIVIA
+========================= */
+
+#triviaScreen,
+#triviaResults {
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #F40009;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+.triviaContent {
+    width: 92%;
+    max-width: 1100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.triviaLogo {
+    width: min(300px, 35vw);
+    height: auto;
+
+    margin-bottom: 20px;
+}
+
+.triviaTop {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.backButton {
+    border: 3px solid white;
+    border-radius: 15px;
+
+    background: transparent;
+    color: white;
+
+    padding: 15px 25px;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#triviaQuestionNumber,
+#triviaScore {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.triviaQuestion {
+    width: 100%;
+
+    min-height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background: white;
+    color: #F40009;
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+.triviaAnswers {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.triviaAnswer {
+    min-height: 100px;
+
+    border: 4px solid white;
+    border-radius: 20px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 0 rgba(0,0,0,0.15);
+}
+
+.triviaAnswer:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+.triviaAnswer.correct {
+    background: #2e9b4b;
+    color: white;
+}
+
+.triviaAnswer.wrong {
+    background: #222;
+    color: white;
+}
+
+#triviaFeedback {
+    min-height: 50px;
+
+    margin-top: 15px;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* =========================
+   TRIVIA RESULTS
+========================= */
+
+.resultsContent {
+    width: 90%;
+    max-width: 950px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+
+    max-height: 95vh;
+}
+
+.resultsLogo {
+    width: min(280px, 30vw);
+
+    margin-bottom: 10px;
+}
+
+.resultsContent h1 {
+    font-size: clamp(30px, 4vw, 50px);
+
+    margin-bottom: 10px;
+}
+
+#finalScore {
+    font-size: clamp(45px, 6vw, 75px);
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+#wrongAnswers {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.wrongAnswerCard {
+    background: white;
+    color: #222;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    text-align: left;
+
+    font-size: 22px;
+}
+
+.wrongAnswerCard strong {
+    color: #F40009;
+}
+
+.resultButtons {
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.resultButtons button {
+    min-width: 260px;
+    min-height: 80px;
+
+    border: 4px solid white;
+    border-radius: 20px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    padding: 15px 25px;
+}
+
+
+/* =========================
+   SMALLER SCREENS
+========================= */
+
+@media (max-width: 800px) {
+
+    .triviaAnswers {
+        grid-template-columns: 1fr;
+    }
+
+    .triviaAnswer {
+        min-height: 80px;
+    }
+
+    .triviaQuestion {
+        min-height: 130px;
+    }
+
+}
+    
 </style>
 </head>
 
@@ -365,19 +626,527 @@ body {
             </button>
 
         </div>
+        
 
     </div>
 
 </div>
 
 
+<!-- =========================
+     COKE TRIVIA
+========================= -->
+
+<div id="triviaScreen">
+
+    <div class="triviaContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="triviaLogo">
+
+        <div class="triviaTop">
+
+            <button id="triviaBackButton" class="backButton">
+                ← MENU
+            </button>
+
+            <div id="triviaQuestionNumber">
+                QUESTION 1 OF 5
+            </div>
+
+            <div id="triviaScore">
+                SCORE: 0
+            </div>
+
+        </div>
+
+        <div class="triviaQuestion" id="triviaQuestion">
+            Question goes here
+        </div>
+
+        <div class="triviaAnswers" id="triviaAnswers">
+        </div>
+
+        <div id="triviaFeedback"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TRIVIA RESULTS
+========================= -->
+
+<div id="triviaResults">
+
+    <div class="resultsContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="resultsLogo">
+
+        <h1>TRIVIA COMPLETE!</h1>
+
+        <div id="finalScore"></div>
+
+        <div id="wrongAnswers"></div>
+
+        <div class="resultButtons">
+
+            <button id="playTriviaAgain">
+                PLAY AGAIN
+            </button>
+
+            <button id="resultsMenuButton">
+                BACK TO MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <script>
+
+/* =========================
+   SCREEN NAVIGATION
+========================= */
+
+const welcomeScreen = document.getElementById("welcomeScreen");
+const mainMenu = document.getElementById("mainMenu");
+const triviaScreen = document.getElementById("triviaScreen");
+const triviaResults = document.getElementById("triviaResults");
+
+
+/* =========================
+   START BUTTON
+========================= */
 
 document.getElementById("startButton").addEventListener("click", function() {
 
-    document.getElementById("welcomeScreen").style.display = "none";
+    welcomeScreen.style.display = "none";
+    mainMenu.style.display = "flex";
 
-    document.getElementById("mainMenu").style.display = "flex";
+});
+
+
+/* =========================
+   COKE TRIVIA QUESTIONS
+========================= */
+
+const cokeTriviaQuestions = [
+
+    {
+        question: "What year was Coca-Cola created?",
+        answers: ["1886", "1896", "1906", "1916"],
+        correct: "1886"
+    },
+
+    {
+        question: "Where was Coca-Cola first created?",
+        answers: [
+            "Atlanta, Georgia",
+            "New York, New York",
+            "Chicago, Illinois",
+            "Miami, Florida"
+        ],
+        correct: "Atlanta, Georgia"
+    },
+
+    {
+        question: "Who created Coca-Cola?",
+        answers: [
+            "John Pemberton",
+            "Henry Ford",
+            "Walt Disney",
+            "Milton Hershey"
+        ],
+        correct: "John Pemberton"
+    },
+
+    {
+        question: "Which of these is a Coca-Cola brand?",
+        answers: [
+            "Sprite",
+            "Pepsi",
+            "Mountain Dew",
+            "7UP"
+        ],
+        correct: "Sprite"
+    },
+
+    {
+        question: "What colour is most associated with Coca-Cola?",
+        answers: [
+            "Red",
+            "Blue",
+            "Green",
+            "Purple"
+        ],
+        correct: "Red"
+    },
+
+    {
+        question: "Which Coca-Cola drink has no sugar?",
+        answers: [
+            "Coke Zero Sugar",
+            "Minute Maid",
+            "Fanta",
+            "Powerade"
+        ],
+        correct: "Coke Zero Sugar"
+    },
+
+    {
+        question: "Which Coca-Cola brand is known for orange flavour?",
+        answers: [
+            "Fanta",
+            "Sprite",
+            "Powerade",
+            "Dasani"
+        ],
+        correct: "Fanta"
+    },
+
+    {
+        question: "Which Coca-Cola brand is a sports drink?",
+        answers: [
+            "Powerade",
+            "Fanta",
+            "Sprite",
+            "Minute Maid"
+        ],
+        correct: "Powerade"
+    },
+
+    {
+        question: "What is the famous Coca-Cola bottle called?",
+        answers: [
+            "Contour bottle",
+            "Classic bottle",
+            "Curve bottle",
+            "Signature bottle"
+        ],
+        correct: "Contour bottle"
+    },
+
+    {
+        question: "Which drink is known for its lemon-lime flavour?",
+        answers: [
+            "Sprite",
+            "Fanta",
+            "Coca-Cola",
+            "Powerade"
+        ],
+        correct: "Sprite"
+    },
+
+    {
+        question: "Which Coca-Cola brand is primarily a juice brand?",
+        answers: [
+            "Minute Maid",
+            "Sprite",
+            "Fanta",
+            "Powerade"
+        ],
+        correct: "Minute Maid"
+    },
+
+    {
+        question: "Coca-Cola was originally sold in what type of place?",
+        answers: [
+            "Pharmacy",
+            "Grocery store",
+            "Movie theatre",
+            "Restaurant"
+        ],
+        correct: "Pharmacy"
+    },
+
+    {
+        question: "Which of these is NOT a Coca-Cola brand?",
+        answers: [
+            "Pepsi",
+            "Sprite",
+            "Fanta",
+            "Powerade"
+        ],
+        correct: "Pepsi"
+    },
+
+    {
+        question: "What is Coca-Cola commonly shortened to?",
+        answers: [
+            "Coke",
+            "Cola-X",
+            "C-Cola",
+            "CC"
+        ],
+        correct: "Coke"
+    },
+
+    {
+        question: "Which Coca-Cola drink is a lemon-lime soda?",
+        answers: [
+            "Sprite",
+            "Fanta",
+            "Coke Zero",
+            "Powerade"
+        ],
+        correct: "Sprite"
+    }
+
+];
+
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let triviaQuestions = [];
+let currentTriviaQuestion = 0;
+let triviaScore = 0;
+let wrongTriviaAnswers = [];
+
+
+/* =========================
+   SHUFFLE
+========================= */
+
+function shuffleArray(array) {
+
+    return array.sort(() => Math.random() - 0.5);
+
+}
+
+
+/* =========================
+   START TRIVIA
+========================= */
+
+document.getElementById("triviaButton").addEventListener("click", startTrivia);
+
+
+function startTrivia() {
+
+    mainMenu.style.display = "none";
+    triviaResults.style.display = "none";
+    triviaScreen.style.display = "flex";
+
+    currentTriviaQuestion = 0;
+    triviaScore = 0;
+    wrongTriviaAnswers = [];
+
+    triviaQuestions =
+        shuffleArray([...cokeTriviaQuestions]).slice(0, 5);
+
+    showTriviaQuestion();
+
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showTriviaQuestion() {
+
+    const question = triviaQuestions[currentTriviaQuestion];
+
+    document.getElementById("triviaQuestionNumber").textContent =
+        `QUESTION ${currentTriviaQuestion + 1} OF 5`;
+
+    document.getElementById("triviaScore").textContent =
+        `SCORE: ${triviaScore}`;
+
+    document.getElementById("triviaQuestion").textContent =
+        question.question;
+
+    const answersContainer =
+        document.getElementById("triviaAnswers");
+
+    answersContainer.innerHTML = "";
+
+    document.getElementById("triviaFeedback").textContent = "";
+
+    const shuffledAnswers =
+        shuffleArray([...question.answers]);
+
+    shuffledAnswers.forEach(answer => {
+
+        const button = document.createElement("button");
+
+        button.className = "triviaAnswer";
+
+        button.textContent = answer;
+
+        button.addEventListener("click", function() {
+
+            answerTriviaQuestion(answer, button);
+
+        });
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================
+   ANSWER QUESTION
+========================= */
+
+function answerTriviaQuestion(selectedAnswer, selectedButton) {
+
+    const question = triviaQuestions[currentTriviaQuestion];
+
+    const buttons =
+        document.querySelectorAll(".triviaAnswer");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+
+    if (selectedAnswer === question.correct) {
+
+        triviaScore++;
+
+        selectedButton.classList.add("correct");
+
+        document.getElementById("triviaFeedback").textContent =
+            "✓ CORRECT!";
+
+    } else {
+
+        selectedButton.classList.add("wrong");
+
+        wrongTriviaAnswers.push({
+
+            question: question.question,
+
+            yourAnswer: selectedAnswer,
+
+            correctAnswer: question.correct
+
+        });
+
+        document.getElementById("triviaFeedback").textContent =
+            "✗ INCORRECT!";
+
+    }
+
+
+    document.getElementById("triviaScore").textContent =
+        `SCORE: ${triviaScore}`;
+
+
+    setTimeout(() => {
+
+        currentTriviaQuestion++;
+
+        if (currentTriviaQuestion >= 5) {
+
+            showTriviaResults();
+
+        } else {
+
+            showTriviaQuestion();
+
+        }
+
+    }, 1000);
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showTriviaResults() {
+
+    triviaScreen.style.display = "none";
+    triviaResults.style.display = "flex";
+
+    document.getElementById("finalScore").textContent =
+        `${triviaScore} / 5`;
+
+    const wrongContainer =
+        document.getElementById("wrongAnswers");
+
+    wrongContainer.innerHTML = "";
+
+
+    if (wrongTriviaAnswers.length === 0) {
+
+        wrongContainer.innerHTML = `
+            <div class="wrongAnswerCard">
+                🎉 PERFECT SCORE!<br><br>
+                You got every question correct!
+            </div>
+        `;
+
+    } else {
+
+        wrongTriviaAnswers.forEach(item => {
+
+            const card = document.createElement("div");
+
+            card.className = "wrongAnswerCard";
+
+            card.innerHTML = `
+                <strong>Question:</strong><br>
+                ${item.question}<br><br>
+
+                <strong>Your answer:</strong><br>
+                ${item.yourAnswer}<br><br>
+
+                <strong>Correct answer:</strong><br>
+                ${item.correctAnswer}
+            `;
+
+            wrongContainer.appendChild(card);
+
+        });
+
+    }
+
+}
+
+
+/* =========================
+   BACK TO MENU
+========================= */
+
+document.getElementById("triviaBackButton").addEventListener("click", function() {
+
+    triviaScreen.style.display = "none";
+    mainMenu.style.display = "flex";
+
+});
+
+
+document.getElementById("resultsMenuButton").addEventListener("click", function() {
+
+    triviaResults.style.display = "none";
+    mainMenu.style.display = "flex";
+
+});
+
+
+/* =========================
+   PLAY AGAIN
+========================= */
+
+document.getElementById("playTriviaAgain").addEventListener("click", function() {
+
+    startTrivia();
 
 });
 
