@@ -548,6 +548,239 @@ body {
     }
 
 }
+
+    /* =========================
+   COKE OR NOT?
+========================= */
+
+#cokeOrNotScreen,
+#cokeOrNotResults {
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #F40009;
+    color: white;
+
+    overflow: hidden;
+}
+
+.cokeOrNotContent {
+    width: 92%;
+    max-width: 1100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.cokeOrNotLogo {
+    width: min(260px, 30vw);
+    height: auto;
+
+    margin-bottom: 15px;
+}
+
+.cokeOrNotTop {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+#cokeOrNotQuestionNumber,
+#cokeOrNotScore {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.cokeOrNotTitle {
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 900;
+
+    margin-bottom: 15px;
+}
+
+.cokeProductImage {
+    width: min(420px, 45vw);
+    height: 350px;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+.cokeOrNotButtons {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.cokeChoiceButton {
+    min-height: 110px;
+
+    border: 5px solid white;
+    border-radius: 25px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+}
+
+.cokeChoiceButton:active {
+    transform: translateY(6px);
+
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+.cokeChoiceButton.correct {
+    background: #2e9b4b;
+    color: white;
+}
+
+.cokeChoiceButton.wrong {
+    background: #222;
+    color: white;
+}
+
+#cokeOrNotFeedback {
+    min-height: 40px;
+
+    margin-top: 10px;
+
+    font-size: 26px;
+    font-weight: 900;
+}
+
+
+/* =========================
+   COKE OR NOT RESULTS
+========================= */
+
+.cokeOrNotResultsContent {
+    width: 94%;
+    max-width: 1100px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+
+    max-height: 100vh;
+}
+
+#cokeOrNotFinalScore {
+    font-size: clamp(45px, 6vw, 75px);
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+#cokeOrNotWrongAnswers {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.cokeOrNotWrongCard {
+    background: white;
+    color: #222;
+
+    border-radius: 15px;
+
+    padding: 12px 16px;
+
+    text-align: left;
+
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+.cokeOrNotWrongCard strong {
+    color: #F40009;
+}
+
+.cokeOrNotResultButtons {
+    display: flex;
+
+    gap: 15px;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+.cokeOrNotResultButtons button {
+    min-width: 240px;
+    min-height: 70px;
+
+    border: 4px solid white;
+    border-radius: 20px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: 24px;
+    font-weight: 900;
+
+    padding: 12px 20px;
+}
+
+
+/* =========================
+   SMALLER SCREENS
+========================= */
+
+@media (max-width: 800px) {
+
+    .cokeOrNotButtons {
+        grid-template-columns: 1fr;
+    }
+
+    .cokeProductImage {
+        height: 260px;
+    }
+
+    #cokeOrNotWrongAnswers {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
     
 </style>
 </head>
@@ -1154,6 +1387,529 @@ document.getElementById("playTriviaAgain").addEventListener("click", function() 
 
 });
 
+<!-- =========================
+     COKE OR NOT?
+========================= -->
+
+<div id="cokeOrNotScreen">
+
+    <div class="cokeOrNotContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="cokeOrNotLogo">
+
+        <div class="cokeOrNotTop">
+
+            <button id="cokeOrNotBackButton" class="backButton">
+                ← MENU
+            </button>
+
+            <div id="cokeOrNotQuestionNumber">
+                PRODUCT 1 OF 5
+            </div>
+
+            <div id="cokeOrNotScore">
+                SCORE: 0
+            </div>
+
+        </div>
+
+        <div class="cokeOrNotTitle">
+            COKE OR NOT?
+        </div>
+
+        <img
+            id="cokeProductImage"
+            class="cokeProductImage"
+            src=""
+            alt="Drink">
+
+        <div class="cokeOrNotButtons">
+
+            <button
+                id="cokeButton"
+                class="cokeChoiceButton">
+                🥤 COKE
+            </button>
+
+            <button
+                id="notCokeButton"
+                class="cokeChoiceButton">
+                ❌ NOT COKE
+            </button>
+
+        </div>
+
+        <div id="cokeOrNotFeedback"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     COKE OR NOT RESULTS
+========================= -->
+
+<div id="cokeOrNotResults">
+
+    <div class="cokeOrNotResultsContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="resultsLogo">
+
+        <h1>COKE OR NOT COMPLETE!</h1>
+
+        <div id="cokeOrNotFinalScore"></div>
+
+        <div id="cokeOrNotWrongAnswers"></div>
+
+        <div class="cokeOrNotResultButtons">
+
+            <button id="cokeOrNotPlayAgain">
+                PLAY AGAIN
+            </button>
+
+            <button id="cokeOrNotMenuButton">
+                BACK TO MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</div> 
+
+/* =========================
+   COKE OR NOT? PRODUCTS
+========================= */
+
+const cokeOrNotProducts = [
+
+    /* =========================
+       COKE PRODUCTS
+    ========================= */
+
+    {
+        name: "Coca-Cola",
+        image: "cocacola.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "AHA",
+        image: "AHA.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Barq's Root Beer",
+        image: "Barqs.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Fanta",
+        image: "fanta.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Powerade",
+        image: "powerade.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Sprite",
+        image: "sprite.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Minute Maid",
+        image: "orange juice.jpg",
+        isCoke: true
+    },
+
+    {
+        name: "Dasani",
+        image: "dasani.jpg",
+        isCoke: true
+    },
+
+
+    /* =========================
+       NOT COKE
+    ========================= */
+
+    {
+        name: "7UP",
+        image: "7up.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Bubly",
+        image: "bubly.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Dr Pepper",
+        image: "drpepper.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Gatorade",
+        image: "gatorade.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Mountain Dew",
+        image: "mountain-dew.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "MUG Root Beer",
+        image: "mug.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Pepsi",
+        image: "pepsi.jpg",
+        isCoke: false
+    },
+
+    {
+        name: "Red Bull",
+        image: "red_bull.jpg",
+        isCoke: false
+    }
+
+];
+
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let cokeOrNotQuestions = [];
+let currentCokeOrNotQuestion = 0;
+let cokeOrNotScore = 0;
+let wrongCokeOrNotAnswers = [];
+
+
+/* =========================
+   START COKE OR NOT
+========================= */
+
+document.getElementById("cokeOrNotButton").addEventListener("click", startCokeOrNot);
+
+
+function startCokeOrNot() {
+
+    mainMenu.style.display = "none";
+    cokeOrNotResults.style.display = "none";
+    cokeOrNotScreen.style.display = "flex";
+
+    currentCokeOrNotQuestion = 0;
+    cokeOrNotScore = 0;
+    wrongCokeOrNotAnswers = [];
+
+    /* Pick 5 random products */
+
+    cokeOrNotQuestions =
+        shuffleArray([...cokeOrNotProducts]).slice(0, 5);
+
+    showCokeOrNotQuestion();
+
+}
+
+
+/* =========================
+   SHOW PRODUCT
+========================= */
+
+function showCokeOrNotQuestion() {
+
+    const product =
+        cokeOrNotQuestions[currentCokeOrNotQuestion];
+
+
+    document.getElementById("cokeOrNotQuestionNumber").textContent =
+        `PRODUCT ${currentCokeOrNotQuestion + 1} OF 5`;
+
+
+    document.getElementById("cokeOrNotScore").textContent =
+        `SCORE: ${cokeOrNotScore}`;
+
+
+    document.getElementById("cokeProductImage").src =
+        product.image;
+
+
+    document.getElementById("cokeProductImage").alt =
+        "Mystery drink";
+
+
+    document.getElementById("cokeOrNotFeedback").textContent =
+        "";
+
+
+    /* Reset buttons */
+
+    const cokeButton =
+        document.getElementById("cokeButton");
+
+    const notCokeButton =
+        document.getElementById("notCokeButton");
+
+
+    cokeButton.disabled = false;
+    notCokeButton.disabled = false;
+
+    cokeButton.classList.remove("correct", "wrong");
+    notCokeButton.classList.remove("correct", "wrong");
+
+}
+
+
+/* =========================
+   ANSWER
+========================= */
+
+function answerCokeOrNot(playerSaysCoke) {
+
+    const product =
+        cokeOrNotQuestions[currentCokeOrNotQuestion];
+
+
+    const correct =
+        playerSaysCoke === product.isCoke;
+
+
+    const cokeButton =
+        document.getElementById("cokeButton");
+
+    const notCokeButton =
+        document.getElementById("notCokeButton");
+
+
+    /* Disable both buttons */
+
+    cokeButton.disabled = true;
+    notCokeButton.disabled = true;
+
+
+    /* Correct answer */
+
+    if (correct) {
+
+        cokeOrNotScore++;
+
+
+        if (playerSaysCoke) {
+
+            cokeButton.classList.add("correct");
+
+        } else {
+
+            notCokeButton.classList.add("correct");
+
+        }
+
+
+        document.getElementById("cokeOrNotFeedback").textContent =
+            "✓ CORRECT!";
+
+
+    } else {
+
+        if (playerSaysCoke) {
+
+            cokeButton.classList.add("wrong");
+
+        } else {
+
+            notCokeButton.classList.add("wrong");
+
+        }
+
+
+        wrongCokeOrNotAnswers.push({
+
+            product: product.name,
+
+            yourAnswer:
+                playerSaysCoke ? "COKE" : "NOT COKE",
+
+            correctAnswer:
+                product.isCoke ? "COKE" : "NOT COKE"
+
+        });
+
+
+        document.getElementById("cokeOrNotFeedback").textContent =
+            "✗ INCORRECT!";
+
+    }
+
+
+    document.getElementById("cokeOrNotScore").textContent =
+        `SCORE: ${cokeOrNotScore}`;
+
+
+    /* Move to next product */
+
+    setTimeout(() => {
+
+        currentCokeOrNotQuestion++;
+
+
+        if (currentCokeOrNotQuestion >= 5) {
+
+            showCokeOrNotResults();
+
+        } else {
+
+            showCokeOrNotQuestion();
+
+        }
+
+    }, 1000);
+
+}
+
+
+/* =========================
+   COKE BUTTON
+========================= */
+
+document.getElementById("cokeButton").addEventListener("click", function() {
+
+    answerCokeOrNot(true);
+
+});
+
+
+/* =========================
+   NOT COKE BUTTON
+========================= */
+
+document.getElementById("notCokeButton").addEventListener("click", function() {
+
+    answerCokeOrNot(false);
+
+});
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showCokeOrNotResults() {
+
+    cokeOrNotScreen.style.display = "none";
+    cokeOrNotResults.style.display = "flex";
+
+
+    document.getElementById("cokeOrNotFinalScore").textContent =
+        `${cokeOrNotScore} / 5`;
+
+
+    const wrongContainer =
+        document.getElementById("cokeOrNotWrongAnswers");
+
+
+    wrongContainer.innerHTML = "";
+
+
+    /* Perfect score */
+
+    if (wrongCokeOrNotAnswers.length === 0) {
+
+        wrongContainer.innerHTML = `
+            <div class="cokeOrNotWrongCard">
+                🎉 PERFECT SCORE!<br><br>
+                You got every product correct!
+            </div>
+        `;
+
+    } else {
+
+        wrongCokeOrNotAnswers.forEach(item => {
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "cokeOrNotWrongCard";
+
+
+            card.innerHTML = `
+                <strong>Product:</strong><br>
+                ${item.product}<br><br>
+
+                <strong>Your answer:</strong>
+                ${item.yourAnswer}<br>
+
+                <strong>Correct answer:</strong>
+                ${item.correctAnswer}
+            `;
+
+
+            wrongContainer.appendChild(card);
+
+        });
+
+    }
+
+}
+
+
+/* =========================
+   BACK TO MENU
+========================= */
+
+document.getElementById("cokeOrNotBackButton").addEventListener("click", function() {
+
+    cokeOrNotScreen.style.display = "none";
+
+    mainMenu.style.display = "flex";
+
+});
+
+
+document.getElementById("cokeOrNotMenuButton").addEventListener("click", function() {
+
+    cokeOrNotResults.style.display = "none";
+
+    mainMenu.style.display = "flex";
+
+});
+
+
+/* =========================
+   PLAY AGAIN
+========================= */
+
+document.getElementById("cokeOrNotPlayAgain").addEventListener("click", function() {
+
+    startCokeOrNot();
+
+});
+
+    
 </script>
 
 </body>
