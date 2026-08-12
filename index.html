@@ -893,7 +893,329 @@ body {
     }
 
 }
-    
+
+
+/* =========================
+   GUESS THE COKE PRODUCT
+========================= */
+
+#guessProductScreen,
+#guessProductResults {
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #F40009;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+.guessProductContent {
+
+    width: 92%;
+    max-width: 1100px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.guessProductLogo {
+
+    width: min(260px, 30vw);
+
+    height: auto;
+
+    margin-bottom: 10px;
+}
+
+
+.guessProductTop {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+
+#guessProductQuestionNumber,
+#guessProductScore {
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+
+.guessProductTitle {
+
+    font-size: clamp(28px, 4vw, 50px);
+
+    font-weight: 900;
+
+    margin-bottom: 15px;
+}
+
+
+.guessProductImageContainer {
+
+    width: min(600px, 75vw);
+
+    height: 360px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+}
+
+
+.guessProductImage {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    transform: scale(3.5);
+
+    transition: transform 0.5s ease;
+}
+
+
+#guessProductFeedback {
+
+    min-height: 40px;
+
+    font-size: 26px;
+
+    font-weight: 900;
+
+    margin-bottom: 10px;
+}
+
+
+.guessProductInput {
+
+    width: min(650px, 85vw);
+
+    height: 85px;
+
+    border: 5px solid white;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #222;
+
+    text-align: center;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    outline: none;
+
+    padding: 10px 20px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+
+.guessProductInput::placeholder {
+
+    color: #777;
+
+}
+
+
+.guessProductSubmit {
+
+    width: min(650px, 85vw);
+
+    min-height: 80px;
+
+    border: 5px solid white;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #F40009;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 0 rgba(0,0,0,0.15);
+}
+
+
+.guessProductSubmit:active {
+
+    transform: translateY(6px);
+
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+
+#guessCount {
+
+    margin-top: 10px;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   GUESS PRODUCT RESULTS
+========================= */
+
+.guessProductResultsContent {
+
+    width: 90%;
+
+    max-width: 900px;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.guessProductResultsContent h1 {
+
+    font-size: clamp(30px, 4vw, 50px);
+
+    margin-bottom: 10px;
+}
+
+
+#guessProductFinalScore {
+
+    font-size: clamp(55px, 7vw, 90px);
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+
+#guessProductWrongAnswers {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.guessProductWrongCard {
+
+    width: 100%;
+
+    background: white;
+
+    color: #222;
+
+    border-radius: 15px;
+
+    padding: 15px 20px;
+
+    font-size: clamp(20px, 2.5vw, 28px);
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+.guessProductWrongCard .correctAnswer {
+
+    color: #2e9b4b;
+
+    font-weight: 900;
+}
+
+
+/* =========================
+   SMALLER SCREENS
+========================= */
+
+@media (max-width: 800px) {
+
+    .guessProductContent {
+
+        width: 94%;
+    }
+
+    .guessProductImageContainer {
+
+        height: 280px;
+    }
+
+    .guessProductInput {
+
+        height: 75px;
+
+        font-size: 27px;
+    }
+
+    .guessProductSubmit {
+
+        min-height: 70px;
+
+        font-size: 25px;
+    }
+
+}    
 </style>
 </head>
 
@@ -1619,6 +1941,108 @@ document.getElementById("playTriviaAgain").addEventListener("click", function() 
 
 </div> 
 
+    <!-- =========================
+     GUESS THE COKE PRODUCT
+========================= -->
+
+<div id="guessProductScreen">
+
+    <div class="guessProductContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="guessProductLogo">
+
+        <div class="guessProductTop">
+
+            <button id="guessProductBackButton" class="backButton">
+                ← MENU
+            </button>
+
+            <div id="guessProductQuestionNumber">
+                PRODUCT 1 OF 5
+            </div>
+
+            <div id="guessProductScore">
+                SCORE: 0
+            </div>
+
+        </div>
+
+        <div class="guessProductTitle">
+            GUESS THE COKE PRODUCT
+        </div>
+
+        <div class="guessProductImageContainer">
+
+            <img
+                id="guessProductImage"
+                class="guessProductImage"
+                src=""
+                alt="Mystery Coca-Cola product">
+
+        </div>
+
+        <div id="guessProductFeedback"></div>
+
+        <input
+            type="text"
+            id="guessProductInput"
+            class="guessProductInput"
+            placeholder="TYPE YOUR GUESS"
+            autocomplete="off"
+            autocapitalize="words">
+
+        <button
+            id="guessProductSubmit"
+            class="guessProductSubmit">
+            SUBMIT GUESS
+        </button>
+
+        <div id="guessCount">
+            GUESSES: 0
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     GUESS PRODUCT RESULTS
+========================= -->
+
+<div id="guessProductResults">
+
+    <div class="guessProductResultsContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="resultsLogo">
+
+        <h1>GUESS THE COKE PRODUCT</h1>
+
+        <div id="guessProductFinalScore"></div>
+
+        <div id="guessProductWrongAnswers"></div>
+
+        <div class="resultButtons">
+
+            <button id="guessProductPlayAgain">
+                PLAY AGAIN
+            </button>
+
+            <button id="guessProductMenuButton">
+                BACK TO MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <script>
 /* =========================
    COKE OR NOT? PRODUCTS
@@ -2058,6 +2482,545 @@ document.getElementById("cokeOrNotPlayAgain").addEventListener("click", function
 });
 
     
+</script>
+
+<script>
+/* =========================
+   GUESS THE COKE PRODUCT
+========================= */
+
+const guessProductScreen =
+    document.getElementById("guessProductScreen");
+
+const guessProductResults =
+    document.getElementById("guessProductResults");
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+const guessProductProducts = [
+
+    {
+        name: "Coca-Cola",
+        image: "cocacola.jpg"
+    },
+
+    {
+        name: "Sprite",
+        image: "sprite.jpg"
+    },
+
+    {
+        name: "Fanta",
+        image: "fanta.jpg"
+    },
+
+    {
+        name: "Powerade",
+        image: "powerade.jpg"
+    },
+
+    {
+        name: "AHA",
+        image: "AHA.jpg"
+    },
+
+    {
+        name: "Barq's Root Beer",
+        image: "Barqs.jpg"
+    },
+
+    {
+        name: "Minute Maid",
+        image: "orange juice.jpg"
+    },
+
+    {
+        name: "Dasani",
+        image: "dasani.jpg"
+    }
+
+];
+
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let guessProductQuestions = [];
+
+let currentGuessProductQuestion = 0;
+
+let guessProductScore = 0;
+
+let currentGuessCount = 0;
+
+let wrongGuessProductAnswers = [];
+
+
+/* =========================
+   START GAME
+========================= */
+
+document
+    .getElementById("guessProductButton")
+    .addEventListener("click", startGuessProduct);
+
+
+function startGuessProduct() {
+
+    mainMenu.style.display = "none";
+
+    guessProductResults.style.display = "none";
+
+    guessProductScreen.style.display = "flex";
+
+
+    currentGuessProductQuestion = 0;
+
+    guessProductScore = 0;
+
+    currentGuessCount = 0;
+
+    wrongGuessProductAnswers = [];
+
+
+    guessProductQuestions =
+        shuffleArray([...guessProductProducts]).slice(0, 5);
+
+
+    showGuessProductQuestion();
+
+}
+
+
+/* =========================
+   SHOW PRODUCT
+========================= */
+
+function showGuessProductQuestion() {
+
+    const product =
+        guessProductQuestions[currentGuessProductQuestion];
+
+
+    currentGuessCount = 0;
+
+
+    document.getElementById(
+        "guessProductQuestionNumber"
+    ).textContent =
+        `PRODUCT ${currentGuessProductQuestion + 1} OF 5`;
+
+
+    document.getElementById(
+        "guessProductScore"
+    ).textContent =
+        `SCORE: ${guessProductScore}`;
+
+
+    document.getElementById(
+        "guessCount"
+    ).textContent =
+        "GUESSES: 0";
+
+
+    document.getElementById(
+        "guessProductFeedback"
+    ).textContent =
+        "";
+
+
+    const image =
+        document.getElementById("guessProductImage");
+
+
+    image.src = product.image;
+
+
+    image.style.transform =
+        "scale(3.5)";
+
+
+    const input =
+        document.getElementById("guessProductInput");
+
+
+    input.value = "";
+
+    input.disabled = false;
+
+
+    document.getElementById(
+        "guessProductSubmit"
+    ).disabled = false;
+
+
+    setTimeout(() => {
+
+        input.focus();
+
+    }, 100);
+
+}
+
+
+/* =========================
+   NORMALIZE ANSWER
+========================= */
+
+function normalizeGuess(answer) {
+
+    return answer
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]/g, "");
+
+}
+
+
+/* =========================
+   SUBMIT GUESS
+========================= */
+
+function submitGuessProduct() {
+
+    const product =
+        guessProductQuestions[currentGuessProductQuestion];
+
+
+    const input =
+        document.getElementById("guessProductInput");
+
+
+    const playerGuess =
+        input.value.trim();
+
+
+    if (playerGuess === "") {
+
+        return;
+
+    }
+
+
+    currentGuessCount++;
+
+
+    document.getElementById(
+        "guessCount"
+    ).textContent =
+        `GUESSES: ${currentGuessCount}`;
+
+
+    const playerAnswer =
+        normalizeGuess(playerGuess);
+
+
+    const correctAnswer =
+        normalizeGuess(product.name);
+
+
+    /* =========================
+       CORRECT
+    ========================= */
+
+    if (playerAnswer === correctAnswer) {
+
+        let points;
+
+
+        if (currentGuessCount === 1) {
+
+            points = 5;
+
+        } else if (currentGuessCount === 2) {
+
+            points = 4;
+
+        } else if (currentGuessCount === 3) {
+
+            points = 3;
+
+        } else if (currentGuessCount === 4) {
+
+            points = 2;
+
+        } else {
+
+            points = 1;
+
+        }
+
+
+        guessProductScore += points;
+
+
+        document.getElementById(
+            "guessProductScore"
+        ).textContent =
+            `SCORE: ${guessProductScore}`;
+
+
+        document.getElementById(
+            "guessProductImage"
+        ).style.transform =
+            "scale(1)";
+
+
+        document.getElementById(
+            "guessProductFeedback"
+        ).textContent =
+            `✓ CORRECT! +${points}`;
+
+
+        input.disabled = true;
+
+
+        document.getElementById(
+            "guessProductSubmit"
+        ).disabled = true;
+
+
+        setTimeout(() => {
+
+            currentGuessProductQuestion++;
+
+
+            if (
+                currentGuessProductQuestion >= 5
+            ) {
+
+                showGuessProductResults();
+
+            } else {
+
+                showGuessProductQuestion();
+
+            }
+
+        }, 1500);
+
+
+        return;
+
+    }
+
+
+    /* =========================
+       WRONG GUESS
+    ========================= */
+
+    document.getElementById(
+        "guessProductFeedback"
+    ).textContent =
+        "✗ INCORRECT!";
+
+
+    /*
+       Zoom out after each
+       incorrect guess.
+    */
+
+    const zoomLevels = [
+
+        3.5,
+        2.8,
+        2.2,
+        1.6,
+        1.25,
+        1
+
+    ];
+
+
+    const zoomIndex =
+        Math.min(
+            currentGuessCount,
+            zoomLevels.length - 1
+        );
+
+
+    document.getElementById(
+        "guessProductImage"
+    ).style.transform =
+        `scale(${zoomLevels[zoomIndex]})`;
+
+
+    input.value = "";
+
+    input.focus();
+
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+document
+    .getElementById("guessProductSubmit")
+    .addEventListener(
+        "click",
+        submitGuessProduct
+    );
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+document
+    .getElementById("guessProductInput")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                submitGuessProduct();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showGuessProductResults() {
+
+    guessProductScreen.style.display =
+        "none";
+
+    guessProductResults.style.display =
+        "flex";
+
+
+    document.getElementById(
+        "guessProductFinalScore"
+    ).textContent =
+        `${guessProductScore} / 25`;
+
+
+    const wrongContainer =
+        document.getElementById(
+            "guessProductWrongAnswers"
+        );
+
+
+    wrongContainer.innerHTML = "";
+
+
+    if (wrongGuessProductAnswers.length === 0) {
+
+        wrongContainer.innerHTML = `
+            <div class="guessProductWrongCard">
+                🎉 PERFECT SCORE!
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    const title =
+        document.createElement("div");
+
+
+    title.className =
+        "triviaMissedTitle";
+
+
+    title.textContent =
+        "YOU MISSED:";
+
+
+    wrongContainer.appendChild(title);
+
+
+    wrongGuessProductAnswers.forEach(item => {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "guessProductWrongCard";
+
+
+        card.innerHTML = `
+            ❌ ${item.product}
+            —
+            <span class="correctAnswer">
+                Correct: ${item.product}
+            </span>
+        `;
+
+
+        wrongContainer.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   BACK TO MENU
+========================= */
+
+document
+    .getElementById("guessProductBackButton")
+    .addEventListener(
+        "click",
+        function() {
+
+            guessProductScreen.style.display =
+                "none";
+
+            mainMenu.style.display =
+                "flex";
+
+        }
+    );
+
+
+document
+    .getElementById("guessProductMenuButton")
+    .addEventListener(
+        "click",
+        function() {
+
+            guessProductResults.style.display =
+                "none";
+
+            mainMenu.style.display =
+                "flex";
+
+        }
+    );
+
+
+/* =========================
+   PLAY AGAIN
+========================= */
+
+document
+    .getElementById("guessProductPlayAgain")
+    .addEventListener(
+        "click",
+        function() {
+
+            startGuessProduct();
+
+        }
+    );    
+
 </script>
 
 </body>
