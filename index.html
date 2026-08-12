@@ -1874,6 +1874,8 @@ function showCokeOrNotResults() {
     cokeOrNotResults.style.display = "flex";
 
 
+    /* Show final score */
+
     document.getElementById("cokeOrNotFinalScore").textContent =
         `${cokeOrNotScore} / 5`;
 
@@ -1891,43 +1893,53 @@ function showCokeOrNotResults() {
 
         wrongContainer.innerHTML = `
             <div class="cokeOrNotWrongCard">
-                🎉 PERFECT SCORE!<br><br>
-                You got every product correct!
+                🎉 PERFECT SCORE!
             </div>
         `;
 
-    } else {
-
-        wrongCokeOrNotAnswers.forEach(item => {
-
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "cokeOrNotWrongCard";
-
-
-            card.innerHTML = `
-                <strong>Product:</strong><br>
-                ${item.product}<br><br>
-
-                <strong>Your answer:</strong>
-                ${item.yourAnswer}<br>
-
-                <strong>Correct answer:</strong>
-                ${item.correctAnswer}
-            `;
-
-
-            wrongContainer.appendChild(card);
-
-        });
+        return;
 
     }
 
-}
 
+    /* YOU MISSED title */
+
+    const missedTitle =
+        document.createElement("div");
+
+    missedTitle.className =
+        "cokeOrNotMissedTitle";
+
+    missedTitle.textContent =
+        "YOU MISSED:";
+
+    wrongContainer.appendChild(missedTitle);
+
+
+    /* Show missed products */
+
+    wrongCokeOrNotAnswers.forEach(item => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "cokeOrNotWrongCard";
+
+        card.innerHTML = `
+            <span class="wrongIcon">❌</span>
+            ${item.product}
+            —
+            <span class="correctAnswer">
+                Correct: ${item.correctAnswer}
+            </span>
+        `;
+
+        wrongContainer.appendChild(card);
+
+    });
+
+}
 
 /* =========================
    BACK TO MENU
