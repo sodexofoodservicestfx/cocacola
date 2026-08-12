@@ -2502,43 +2502,117 @@ const guessProductResults =
 const guessProductProducts = [
 
     {
-        name: "Coca-Cola",
-        image: "cocacola.jpg"
-    },
-
-    {
-        name: "Sprite",
-        image: "sprite.jpg"
-    },
-
-    {
-        name: "Fanta",
-        image: "fanta.jpg"
-    },
-
-    {
-        name: "Powerade",
-        image: "powerade.jpg"
-    },
-
-    {
-        name: "AHA",
-        image: "AHA.jpg"
+        name: "Diet Coke",
+        image: "diet coke.jpg",
+        acceptedAnswers: [
+            "diet coke",
+            "diet",
+            "diet coca-cola",
+            "diet coca cola" 
+        ]
     },
 
     {
         name: "Barq's Root Beer",
-        image: "Barqs.jpg"
+        image: "Barqs.jpg",
+        acceptedAnswers: [
+            "barqs",
+            "barq's",
+            "barqs root beer",
+            "barq's root beer",
+            "root beer"
+        ]
     },
 
     {
-        name: "Minute Maid",
-        image: "orange juice.jpg"
+        name: "Coca-Cola Zero Sugar",
+        image: "coke zero.jpg",
+        acceptedAnswers: [
+            "coca cola zero sugar",
+            "coca-cola zero sugar",
+            "coke zero",
+            "coke zero sugar",
+            "coca cola zero"
+        ]
     },
 
     {
-        name: "Dasani",
-        image: "dasani.jpg"
+        name: "Coca-Cola",
+        image: "cocacola.jpg",
+        acceptedAnswers: [
+            "coca cola",
+            "coca-cola",
+            "coke",
+            "regular coke",
+            "classic coke",
+            "coke classic"
+        ]
+    },
+
+    {
+        name: "Sprite",
+        image: "sprite.jpg",
+        acceptedAnswers: [
+            "sprite"
+        ]
+    },
+
+    {
+        name: "Fuze Iced Tea",
+        image: "fuze.jpg",
+        acceptedAnswers: [
+            "fuze",
+            "fuze iced tea",
+            "fuze ice tea",
+            "fuse iced tea",
+            "fuse ice tea"
+            "ice tea",
+            "iced tea"
+        ]
+    },
+
+    {
+        name: "Fruitopia",
+        image: "fruitopia.jpg",
+        acceptedAnswers: [
+            "fruitopia",
+            "fruitopia juice",
+            "fruitopia drink",
+            "red frutopia" 
+        ]
+    },
+
+    {
+        name: "Fanta",
+        image: "fanta.jpg",
+        acceptedAnswers: [
+            "fanta",
+            "fanta orange",
+            "orange fanta"
+        ]
+    },
+
+    {
+        name: "Minute Maid Orange Juice",
+        image: "orange juice.jpg",
+        acceptedAnswers: [
+            "minute maid",
+            "minute maid orange juice",
+            "orange juice",
+            "orange",
+            "minute maid oj",
+            "oj"
+        ]
+    },
+
+    {
+        name: "Powerade",
+        image: "powerade.jpg",
+        acceptedAnswers: [
+            "powerade",
+            "powerade sports drink",
+            "blue powerade" 
+        ]
     }
 
 ];
@@ -2689,23 +2763,18 @@ function submitGuessProduct() {
     const product =
         guessProductQuestions[currentGuessProductQuestion];
 
-
     const input =
         document.getElementById("guessProductInput");
-
 
     const playerGuess =
         input.value.trim();
 
-
     if (playerGuess === "") {
-
         return;
-
     }
 
-
     currentGuessCount++;
+
 
 
     document.getElementById(
@@ -2714,19 +2783,20 @@ function submitGuessProduct() {
         `GUESSES: ${currentGuessCount}`;
 
 
-    const playerAnswer =
+  const playerAnswer =
         normalizeGuess(playerGuess);
 
-
-    const correctAnswer =
-        normalizeGuess(product.name);
+    const isCorrect =
+        product.acceptedAnswers.some(answer =>
+            normalizeGuess(answer) === playerAnswer
+        );
 
 
     /* =========================
        CORRECT
     ========================= */
 
-    if (playerAnswer === correctAnswer) {
+    if (isCorrect) {
 
         let points;
 
