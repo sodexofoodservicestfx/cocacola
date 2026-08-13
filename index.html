@@ -1458,6 +1458,91 @@ body {
     }
 
 }
+
+    /* =========================
+   WORLD RESULTS WRONG ANSWERS
+========================= */
+
+#worldWrongAnswers {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+.worldMissedTitle {
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    margin-bottom: 5px;
+}
+
+.worldWrongCard {
+
+    width: 100%;
+
+    background: white;
+
+    color: #222;
+
+    border-radius: 18px;
+
+    padding: 18px 22px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.worldWrongQuestion {
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    margin-bottom: 10px;
+}
+
+.worldYourAnswer {
+
+    color: #F40009;
+
+    margin-bottom: 6px;
+}
+
+.worldCorrectAnswer {
+
+    color: #2e9b4b;
+
+    font-weight: 900;
+}
+
+.worldPerfectScore {
+
+    background: white;
+
+    color: #2e9b4b;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
 </style>
 </head>
 
@@ -3583,6 +3668,8 @@ let currentWorldQuestion = 0;
 
 let worldScore = 0;
 
+let wrongWorldAnswers = [];
+
 
 /* =========================
    SHUFFLE
@@ -3617,6 +3704,7 @@ function startWorldGame() {
 
     worldScore = 0;
 
+    wrongWorldAnswers = [];
 
     /* Pick 5 random questions */
 
@@ -3732,7 +3820,6 @@ function answerWorldQuestion(
     const question =
         worldQuestions[currentWorldQuestion];
 
-
     const buttons =
         document.querySelectorAll(".worldAnswer");
 
@@ -3750,18 +3837,11 @@ function answerWorldQuestion(
        CORRECT
     ========================= */
 
-    if (
-        selectedAnswer ===
-        question.correct
-    ) {
+    if (selectedAnswer === question.correct) {
 
         worldScore++;
 
-
-        selectedButton
-            .classList
-            .add("correct");
-
+        selectedButton.classList.add("correct");
 
         document
             .getElementById("worldFeedback")
@@ -3777,25 +3857,31 @@ function answerWorldQuestion(
 
     else {
 
-        selectedButton
-            .classList
-            .add("wrong");
+        selectedButton.classList.add("wrong");
 
 
         /* Show correct answer */
 
         buttons.forEach(button => {
 
-            if (
-                button.textContent ===
-                question.correct
-            ) {
+            if (button.textContent === question.correct) {
 
-                button.classList.add(
-                    "correct"
-                );
+                button.classList.add("correct");
 
             }
+
+        });
+
+
+        /* Save wrong answer */
+
+        wrongWorldAnswers.push({
+
+            question: question.question,
+
+            yourAnswer: selectedAnswer,
+
+            correctAnswer: question.correct
 
         });
 
@@ -3803,7 +3889,7 @@ function answerWorldQuestion(
         document
             .getElementById("worldFeedback")
             .textContent =
-            `✗ INCORRECT! The answer is ${question.correct}.`;
+            "✗ INCORRECT!";
 
     }
 
@@ -3823,9 +3909,7 @@ function answerWorldQuestion(
         currentWorldQuestion++;
 
 
-        if (
-            currentWorldQuestion >= 5
-        ) {
+        if (currentWorldQuestion >= 5) {
 
             showWorldResults();
 
@@ -3848,11 +3932,9 @@ function answerWorldQuestion(
 
 function showWorldResults() {
 
-    worldScreen.style.display =
-        "none";
+    worldScreen.style.display = "none";
 
-    worldResults.style.display =
-        "flex";
+    worldResults.style.display = "flex";
 
 
     document
@@ -3860,8 +3942,105 @@ function showWorldResults() {
         .textContent =
         `${worldScore} / 5`;
 
-}
 
+    const resultsContent =
+        document.querySelector(".worldResultsContent");
+
+
+    /* Remove old results */
+
+    const oldMissed =
+        document.getElementById("worldWrongAnswers");
+
+    if (oldMissed) {
+
+        oldMissed.remove();
+
+    }
+
+
+    /* =========================
+       PERFECT SCORE
+    ========================= */
+
+    if (wrongWorldAnswers.length === 0) {
+
+        const perfect =
+            document.createElement("div");
+
+        perfect.id =
+            "worldWrongAnswers";
+
+        perfect.innerHTML = `
+            <div class="worldPerfectScore">
+                🎉 PERFECT SCORE!
+            </div>
+        `;
+
+
+        resultsContent.insertBefore(
+            perfect,
+            document.querySelector(".worldResultButtons")
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       YOU MISSED
+    ========================= */
+
+    const wrongContainer =
+        document.createElement("div");
+
+    wrongContainer.id =
+        "worldWrongAnswers";
+
+
+    wrongContainer.innerHTML = `
+        <div class="worldMissedTitle">
+            YOU MISSED:
+        </div>
+    `;
+
+
+    wrongWorldAnswers.forEach(item => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "worldWrongCard";
+
+
+        card.innerHTML = `
+            <div class="worldWrongQuestion">
+                ❌ ${item.question}
+            </div>
+
+            <div class="worldYourAnswer">
+                Your answer: ${item.yourAnswer}
+            </div>
+
+            <div class="worldCorrectAnswer">
+                Correct: ${item.correctAnswer}
+            </div>
+        `;
+
+
+        wrongContainer.appendChild(card);
+
+    });
+
+
+    resultsContent.insertBefore(
+        wrongContainer,
+        document.querySelector(".worldResultButtons")
+    );
+
+}
 
 /* =========================
    BACK TO MENU
