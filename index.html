@@ -1215,6 +1215,249 @@ body {
     }
 
 }    
+
+    /* =========================
+   COKE AROUND THE WORLD
+========================= */
+
+#worldScreen,
+#worldResults {
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #F40009;
+    color: white;
+
+    overflow: hidden;
+}
+
+.worldContent {
+
+    width: 92%;
+    max-width: 1100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.worldLogo {
+
+    width: min(300px, 35vw);
+    height: auto;
+
+    margin-bottom: 20px;
+}
+
+.worldTop {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+#worldQuestionNumber,
+#worldScore {
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.worldQuestion {
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+.worldImage {
+
+    width: min(500px, 65vw);
+    height: 300px;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+}
+
+.worldAnswers {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.worldAnswer {
+
+    min-height: 100px;
+
+    border: 4px solid white;
+    border-radius: 20px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 900;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 0 rgba(0,0,0,0.15);
+}
+
+.worldAnswer:active {
+
+    transform: translateY(6px);
+
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+.worldAnswer.correct {
+
+    background: #2e9b4b;
+    color: white;
+}
+
+.worldAnswer.wrong {
+
+    background: #222;
+    color: white;
+}
+
+#worldFeedback {
+
+    min-height: 50px;
+
+    margin-top: 15px;
+
+    font-size: 28px;
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* =========================
+   WORLD RESULTS
+========================= */
+
+.worldResultsContent {
+
+    width: 90%;
+    max-width: 950px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+
+    max-height: 95vh;
+}
+
+.worldResultsLogo {
+
+    width: min(280px, 30vw);
+
+    margin-bottom: 10px;
+}
+
+.worldResultsContent h1 {
+
+    font-size: clamp(30px, 4vw, 50px);
+
+    margin-bottom: 10px;
+}
+
+#worldFinalScore {
+
+    font-size: clamp(45px, 6vw, 75px);
+
+    font-weight: 900;
+
+    margin-bottom: 25px;
+}
+
+.worldResultButtons {
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.worldResultButtons button {
+
+    min-width: 260px;
+    min-height: 80px;
+
+    border: 4px solid white;
+    border-radius: 20px;
+
+    background: white;
+    color: #F40009;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    padding: 15px 25px;
+}
+
+
+/* =========================
+   SMALLER SCREENS
+========================= */
+
+@media (max-width: 800px) {
+
+    .worldAnswers {
+
+        grid-template-columns: 1fr;
+    }
+
+    .worldAnswer {
+
+        min-height: 80px;
+    }
+
+    .worldImage {
+
+        height: 250px;
+    }
+
+}
 </style>
 </head>
 
@@ -1841,6 +2084,94 @@ document.getElementById("playTriviaAgain").addEventListener("click", function() 
     startTrivia();
 
 });
+
+    <!-- =========================
+     COKE AROUND THE WORLD
+========================= -->
+
+<div id="worldScreen">
+
+    <div class="worldContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="worldLogo">
+
+        <div class="worldTop">
+
+            <button id="worldBackButton" class="backButton">
+                ← MENU
+            </button>
+
+            <div id="worldQuestionNumber">
+                QUESTION 1 OF 5
+            </div>
+
+            <div id="worldScore">
+                SCORE: 0
+            </div>
+
+        </div>
+
+    <div
+    class="worldQuestion"
+    id="worldQuestion">
+    WHERE IS THIS COKE FROM?
+</div>
+
+        <img
+            id="worldImage"
+            class="worldImage"
+            src=""
+            alt="Coca-Cola product">
+
+        <div
+            id="worldAnswers"
+            class="worldAnswers">
+        </div>
+
+        <div id="worldFeedback"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     COKE AROUND THE WORLD RESULTS
+========================= -->
+
+<div id="worldResults">
+
+    <div class="worldResultsContent">
+
+        <img
+            src="Coca-Cola_logo_white.png"
+            alt="Coca-Cola"
+            class="worldResultsLogo">
+
+        <h1>
+            COKE AROUND THE WORLD COMPLETE!
+        </h1>
+
+        <div id="worldFinalScore"></div>
+
+        <div class="worldResultButtons">
+
+            <button id="worldPlayAgain">
+                PLAY AGAIN
+            </button>
+
+            <button id="worldMenuButton">
+                BACK TO MENU
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
     
 </script>
 <!-- =========================
@@ -3090,7 +3421,488 @@ document
             startGuessProduct();
 
         }
-    );    
+    );   
+    /* =========================
+   COKE AROUND THE WORLD
+========================= */
+
+const worldScreen =
+    document.getElementById("worldScreen");
+
+const worldResults =
+    document.getElementById("worldResults");
+
+
+/* =========================
+   QUESTIONS
+========================= */
+
+const worldQuestionsBank = [
+
+    {
+        name: "Coke Apple",
+        image: "apple.jpg",
+        question: "WHERE IS THIS COKE FROM?",
+        correct: "Japan",
+        answers: [
+    "🇯🇵 Japan",
+    "🇨🇳 China",
+    "🇰🇷 South Korea",
+    "🇹🇭 Thailand"
+]
+    },
+
+    {
+        name: "Coke in Arabic",
+        image: "arabic.jpg",
+        question: "WHAT LANGUAGE IS ON THIS COKE?",
+        correct: "Arabic",
+        answers: [
+            "Arabic",
+            "Hebrew",
+            "Chinese",
+            "Korean"
+        ]
+    },
+
+    {
+        name: "Coke in Chinese",
+        image: "chinese.jpg",
+        question: "WHAT LANGUAGE IS ON THIS COKE?",
+        correct: "Chinese",
+        answers: [
+            "Chinese",
+            "Japanese",
+            "Korean",
+            "Thai"
+        ]
+    },
+
+    {
+        name: "Coke Cinnamon",
+        image: "cinnamon.jpg",
+        question: "WHERE IS THIS COKE FROM?",
+        correct: "United Kingdom",
+       answers: [
+    "🇬🇧 United Kingdom",
+    "🇨🇦 Canada",
+    "🇺🇸 United States",
+    "🇦🇺 Australia"
+]
+    },
+
+    {
+        name: "Coke Clear",
+        image: "clear.jpg",
+        question: "WHERE IS THIS COKE FROM?",
+        correct: "Japan",
+        answers: [
+    "🇯🇵 Japan",
+    "🇨🇳 China",
+    "🇰🇷 South Korea",
+    "🇸🇬 Singapore"
+]
+    },
+
+    {
+        name: "Coke Energy",
+        image: "energy.jpg",
+        question: "WHERE IS THIS COKE FROM?",
+        correct: "Spain",
+        answers: [
+    "🇪🇸 Spain",
+    "🇫🇷 France",
+    "🇮🇹 Italy",
+    "🇵🇹 Portugal"
+]
+    },
+
+    {
+        name: "Coke in Thai",
+        image: "thailand.jpg",
+        question: "WHAT LANGUAGE IS ON THIS COKE?",
+        correct: "Thai",
+        answers: [
+            "Thai",
+            "Chinese",
+            "Korean",
+            "Arabic"
+        ]
+    },
+
+    {
+        name: "Coke Peach",
+        image: "peach.jpg",
+        question: "WHERE IS THIS COKE FROM?",
+        correct: "China",
+        answers: [
+    "🇨🇳 China",
+    "🇯🇵 Japan",
+    "🇰🇷 South Korea",
+    "🇹🇭 Thailand"
+]
+    },
+
+    {
+        name: "Coke in Hebrew",
+        image: "hebrew.jpg",
+        question: "WHAT LANGUAGE IS ON THIS COKE?",
+        correct: "Hebrew",
+        answers: [
+            "Hebrew",
+            "Arabic",
+            "Chinese",
+            "Korean"
+        ]
+    },
+
+    {
+        name: "Coke in Korean",
+        image: "korean.jpg",
+        question: "WHAT LANGUAGE IS ON THIS COKE?",
+        correct: "Korean",
+        answers: [
+            "Korean",
+            "Japanese",
+            "Chinese",
+            "Thai"
+        ]
+    }
+
+];
+
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let worldQuestions = [];
+
+let currentWorldQuestion = 0;
+
+let worldScore = 0;
+
+
+/* =========================
+   SHUFFLE
+========================= */
+
+function shuffleWorldArray(array) {
+
+    return array.sort(() => Math.random() - 0.5);
+
+}
+
+
+/* =========================
+   START GAME
+========================= */
+
+document
+    .getElementById("worldButton")
+    .addEventListener("click", startWorldGame);
+
+
+function startWorldGame() {
+
+    mainMenu.style.display = "none";
+
+    worldResults.style.display = "none";
+
+    worldScreen.style.display = "flex";
+
+
+    currentWorldQuestion = 0;
+
+    worldScore = 0;
+
+
+    /* Pick 5 random questions */
+
+    worldQuestions =
+        shuffleWorldArray([...worldQuestionsBank])
+        .slice(0, 5);
+
+
+    showWorldQuestion();
+
+}
+
+
+/* =========================
+   SHOW QUESTION
+========================= */
+
+function showWorldQuestion() {
+
+    const question =
+        worldQuestions[currentWorldQuestion];
+
+
+    document
+        .getElementById("worldQuestionNumber")
+        .textContent =
+        `QUESTION ${currentWorldQuestion + 1} OF 5`;
+
+
+    document
+        .getElementById("worldScore")
+        .textContent =
+        `SCORE: ${worldScore}`;
+
+
+    document
+        .getElementById("worldFeedback")
+        .textContent = "";
+    
+    document
+    .getElementById("worldQuestion")
+    .textContent =
+    question.question;
+
+    document
+        .getElementById("worldImage")
+        .src =
+        question.image;
+
+
+    document
+        .getElementById("worldImage")
+        .alt =
+        question.name;
+
+
+    const answersContainer =
+        document.getElementById("worldAnswers");
+
+
+    answersContainer.innerHTML = "";
+
+
+    /* Randomize answer positions */
+
+    const shuffledAnswers =
+        shuffleWorldArray([...question.answers]);
+
+
+    shuffledAnswers.forEach(answer => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "worldAnswer";
+
+
+        button.textContent =
+            answer;
+
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                answerWorldQuestion(
+                    answer,
+                    button
+                );
+
+            }
+        );
+
+
+        answersContainer.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================
+   ANSWER QUESTION
+========================= */
+
+function answerWorldQuestion(
+    selectedAnswer,
+    selectedButton
+) {
+
+    const question =
+        worldQuestions[currentWorldQuestion];
+
+
+    const buttons =
+        document.querySelectorAll(".worldAnswer");
+
+
+    /* Disable all buttons */
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
+    });
+
+
+    /* =========================
+       CORRECT
+    ========================= */
+
+    if (
+        selectedAnswer ===
+        question.correct
+    ) {
+
+        worldScore++;
+
+
+        selectedButton
+            .classList
+            .add("correct");
+
+
+        document
+            .getElementById("worldFeedback")
+            .textContent =
+            "✓ CORRECT!";
+
+    }
+
+
+    /* =========================
+       WRONG
+    ========================= */
+
+    else {
+
+        selectedButton
+            .classList
+            .add("wrong");
+
+
+        /* Show correct answer */
+
+        buttons.forEach(button => {
+
+            if (
+                button.textContent ===
+                question.correct
+            ) {
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+        });
+
+
+        document
+            .getElementById("worldFeedback")
+            .textContent =
+            `✗ INCORRECT! The answer is ${question.correct}.`;
+
+    }
+
+
+    document
+        .getElementById("worldScore")
+        .textContent =
+        `SCORE: ${worldScore}`;
+
+
+    /* =========================
+       NEXT QUESTION
+    ========================= */
+
+    setTimeout(() => {
+
+        currentWorldQuestion++;
+
+
+        if (
+            currentWorldQuestion >= 5
+        ) {
+
+            showWorldResults();
+
+        }
+
+        else {
+
+            showWorldQuestion();
+
+        }
+
+    }, 1200);
+
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+function showWorldResults() {
+
+    worldScreen.style.display =
+        "none";
+
+    worldResults.style.display =
+        "flex";
+
+
+    document
+        .getElementById("worldFinalScore")
+        .textContent =
+        `${worldScore} / 5`;
+
+}
+
+
+/* =========================
+   BACK TO MENU
+========================= */
+
+document
+    .getElementById("worldBackButton")
+    .addEventListener("click", function() {
+
+        worldScreen.style.display =
+            "none";
+
+        mainMenu.style.display =
+            "flex";
+
+    });
+
+
+document
+    .getElementById("worldMenuButton")
+    .addEventListener("click", function() {
+
+        worldResults.style.display =
+            "none";
+
+        mainMenu.style.display =
+            "flex";
+
+    });
+
+
+/* =========================
+   PLAY AGAIN
+========================= */
+
+document
+    .getElementById("worldPlayAgain")
+    .addEventListener("click", function() {
+
+        startWorldGame();
+
+    });
 
 </script>
 
