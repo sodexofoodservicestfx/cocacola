@@ -4086,5 +4086,57 @@ document
 
 </script>
 
+<script>
+/* =========================
+   60 SECOND INACTIVITY TIMEOUT
+========================= */
+
+let inactivityTimer;
+
+const INACTIVITY_LIMIT = 60000; // 60 seconds
+
+function resetInactivityTimer() {
+
+    clearTimeout(inactivityTimer);
+
+    inactivityTimer = setTimeout(() => {
+
+        // Hide every game/result screen
+        document.querySelectorAll(
+            "#mainMenu, " +
+            "#triviaScreen, " +
+            "#triviaResults, " +
+            "#cokeOrNotScreen, " +
+            "#cokeOrNotResults, " +
+            "#guessProductScreen, " +
+            "#guessProductResults, " +
+            "#worldScreen, " +
+            "#worldResults"
+        ).forEach(screen => {
+            screen.style.display = "none";
+        });
+
+        // Return to Coca-Cola welcome screen
+        welcomeScreen.style.display = "flex";
+
+        // Start a fresh 60-second countdown
+        resetInactivityTimer();
+
+    }, INACTIVITY_LIMIT);
+}
+
+
+/* Reset timer whenever someone interacts with the screen */
+
+document.addEventListener("click", resetInactivityTimer);
+document.addEventListener("touchstart", resetInactivityTimer);
+document.addEventListener("input", resetInactivityTimer);
+
+
+/* Start the timer when the page loads */
+
+resetInactivityTimer();
+
+</script>
 </body>
 </html>
